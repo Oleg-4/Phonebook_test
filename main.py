@@ -164,6 +164,7 @@ def deleter():
 	
 	now_person = ui5.comboBox.currentText()
 	Models.delete_account(now_person)
+	message(now_person,'del')
 	restructure()
 
 ### Функция автовхода под последним юзером, который вошел с флагом "автовход" и не вышел ###
@@ -254,6 +255,7 @@ def add_subs():
 	birthdate = ui7.dateEdit.dateTime().toString('yyyy-MM-dd')
 	if unique() == True:
 		Models.subscriber_append(str(name),str(number),birthdate)
+		message(name,'add')
 		ui7.lineEdit.clear()
 		ui7.lineEdit_2.clear()
 		ui7.dateEdit.clear()
@@ -297,6 +299,24 @@ def pass_modify():
 	if ui.checkBox_2.checkState() == 2:
 		ui.lineEdit_2.setEchoMode(0)
 	else: ui.lineEdit_2.setEchoMode(2)
+
+### Системное сообщение ###
+def message(name,operand):
+
+	if operand == 'add':
+		
+		msg = QtWidgets.QMessageBox()
+		msg.setText('Абонент  ' + name + '  добавлен!')
+		msg.setWindowTitle("Информация")
+		msg.exec()
+	
+	if operand == 'del':
+		
+		msg = QtWidgets.QMessageBox()
+		msg.setText('Абонент  ' + name + '  удалён!')
+		msg.setWindowTitle("Информация")
+		msg.exec()
+
 
 
 ################################################################################################
@@ -549,3 +569,4 @@ def ua():
 if __name__=="__main__":
     main()
   
+
