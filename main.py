@@ -1,10 +1,8 @@
 import sys
 import datetime
-from PyQt5 import QtCore, QtGui, QtWidgets
-
 from main_window import *
-
 from database_script import Models
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 ### Инициализация всех окон сразу ###
 
