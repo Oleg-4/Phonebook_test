@@ -51,37 +51,37 @@ def five():
 def six():
 		query = "INSERT INTO inbool (autoin,USER,PASSWORD) VALUES(FALSE,'Oleg','555')"
 		Database.add_data(query)
-		print('........')
+		print('.......')
 
 def zero():
 		query = "CREATE DATABASE IF NOT EXISTS test"
 		Database.add_data(query)
-		print('..........')
+		print('')
 
 def one():
 		query = "ALTER DATABASE test CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;"
 		Database.add_data(query)
-		print('............')
+		print('.........')
 
 def two():
 		query = "ALTER TABLE phonebook CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 		Database.add_data(query)
-		print('..............')
+		print('...........')
 
 def two_1():
 		query = "ALTER TABLE inbool CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 		Database.add_data(query)
-		print('.................')
+		print('................................')
 
 def inserter():
 		query = "INSERT INTO phonebook(name,number,birthdate) VALUES ('Андрей Петров','89765465456','1992-11-12')"
 		Database.add_data(query)
-		print('.......................')
+		print('...........')
 
 def two_2():
 		query = "ALTER TABLE login CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 		Database.add_data(query)
-		print('.........................')
+		print('................................')
 		print('--Migrations are successful!!!--')
 
 
