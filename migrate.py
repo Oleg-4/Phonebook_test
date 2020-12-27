@@ -76,7 +76,7 @@ def two_1():
 def inserter():
 		query = "INSERT INTO phonebook(name,number,birthdate) VALUES ('Андрей Петров','89765465456','1992-11-12')"
 		Database.add_data(query)
-		print('...........')
+		print('................................')
 
 def two_2():
 		query = "ALTER TABLE login CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
