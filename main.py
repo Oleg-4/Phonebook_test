@@ -135,19 +135,21 @@ def main_show():
 ### Функция представления изменения данных записи ###
 def edit_show():
 	
-	MainWindow_6.show()
-	current_person = ui5.comboBox.currentText()
-	get_account = Models.get_account(current_person)
-	get_low = get_account[0]
-	get_1 = str(get_low[0])
-	get_2 = str(get_low[1])
-	get_3 = get_low[2]
+	if ui5.comboBox.count() > 0:
+		MainWindow_6.show()
+		current_person = ui5.comboBox.currentText()
+		get_account = Models.get_account(current_person)
+		get_low = get_account[0]
+		get_1 = str(get_low[0])
+		get_2 = str(get_low[1])
+		get_3 = get_low[2]
 
-	ui6.lineEdit.setText(get_1)
-	ui6.lineEdit_2.setText(get_2)
-	ui6.dateEdit.setDate(get_3)
-	global static_value
-	static_value = ui6.lineEdit.text()
+		ui6.lineEdit.setText(get_1)
+		ui6.lineEdit_2.setText(get_2)
+		ui6.dateEdit.setDate(get_3)
+		global static_value
+		static_value = ui6.lineEdit.text()
+	else: message('name','NULL')
 
 ### Функция изменения данных записи ###
 def edit_del():
@@ -164,11 +166,13 @@ def edit_del():
 ### Функция удаления данных записи ###
 def deleter():
 	
-	now_person = ui5.comboBox.currentText()
-	Models.delete_account(now_person)
-	message(now_person,'del')
-	hb_pres()
-	restructure()
+	if ui5.comboBox.count() > 0:
+		now_person = ui5.comboBox.currentText()
+		Models.delete_account(now_person)
+		message(now_person,'del')
+		hb_pres()
+		restructure()
+	else: message('name','NULL')
 	
 
 ### Функция автовхода под последним юзером, который вошел с флагом "автовход" и не вышел ###
@@ -305,30 +309,24 @@ def pass_modify():
 		ui.lineEdit_2.setEchoMode(0)
 	else: ui.lineEdit_2.setEchoMode(2)
 
-### Системное сообщение ###
+### Системные сообщения ###
 def message(name,operand):
 
-	if operand == 'add':
-		
 		msg = QtWidgets.QMessageBox()
-		msg.setText('Абонент  {}  добавлен!'.format(name))
+		if operand == 'NULL':
+			msg.setText('Список абонентов пуст!')
+		if operand == 'add':
+			msg.setText('Абонент  {}  добавлен!'.format(name))
+		if operand == 'del':
+			msg.setText('Абонент  {}  удалён!'.format(name))
 		msg.setWindowTitle("Информация")
 		msg.exec()
-	
-	if operand == 'del':
-		
-		msg = QtWidgets.QMessageBox()
-		msg.setText('Абонент  {}  удалён!'.format(name))
-		msg.setWindowTitle("Информация")
-		msg.exec()
-
 
 
 ################################################################################################
 ###  Дальше идет позор. Он тут появился оттого, что я не нашел как вместе с сигналом кнопки  ###
 ###              передавать в функцию её параметры. Заранее извиняюсь                        ###
 ################################################################################################	
-
 
 def ab():
 	cleaner()
@@ -346,8 +344,6 @@ def ab():
 		ui2.listWidget.addItem(i[0])
 		ui2.listWidget_2.addItem(i[1])
 		ui2.listWidget_3.addItem(str(i[2]))
-
-
 
 def vg():
 	cleaner()
@@ -569,8 +565,5 @@ def ua():
 		ui2.listWidget_2.addItem(i[1])
 		ui2.listWidget_3.addItem(str(i[2]))
 
-
-
 if __name__=="__main__":
     main()
-  
